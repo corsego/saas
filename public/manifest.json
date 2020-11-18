@@ -1,12 +1,12 @@
 {
-  "name": "My Progressive Web App",
-  "short_name": "My PWA",
+  "name": "Corsego Multi-Tenancy SaaS PWA",
+  "short_name": "Corsego SaaS",
   "start_url": "/",
   "scope": "/",
   "display": "fullscreen",
   "background_color": "#fff",
   "theme_color": "#3367D6",
-  "description": "This is a sample description. Change it.",
+  "description": "Corsego Multi-Tenancy SaaS PWA application.",
   "lang": "en",
   "orientation": "portrait",
   "icons": [
