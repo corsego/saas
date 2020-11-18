@@ -6,7 +6,6 @@
   "display": "fullscreen",
   "background_color": "#fff",
   "theme_color": "#3367D6",
-  "description": "Corsego Multi-Tenancy SaaS PWA application.",
   "lang": "en",
   "orientation": "portrait",
   "icons": [
