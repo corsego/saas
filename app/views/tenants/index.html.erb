@@ -16,7 +16,6 @@
         <th><%= model_class.human_attribute_name(:logo) %></th>
         <th><%= sort_link(@q, :plan_name, model_class.human_attribute_name(:plan)) %></th>
         <th><%= sort_link(@q, :members_count) %></th>
-        <th><%= model_class.human_attribute_name(:users) %></th>
         <th><%= model_class.human_attribute_name(:active) %></th>
         <th></th>
         <th></th>
@@ -46,9 +45,6 @@
               </span>
             <% end %>
           <td><%= tenant.members_count %></td>
-          <td>
-            <%= tenant.users.compact.join(', ') %>
-          </td>
           <td>
             <%= boolean_label(tenant.subscription.active?) if tenant.subscription.present? %>
           </td>

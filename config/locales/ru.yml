@@ -18,13 +18,13 @@ ru:
     account_settings: Настройки
     sign_out: Выход
     register: Регистрация
-    log_in: Вход
+    login: Вход
     superadmin: Админка
     home: Главная
     about: Про нас
     pricing: Тарифы
     terms: Условия Пользования
-    privacy: Политика Приватности
+    privacy: Политика Конфиденциальности
     plans: Тарифы
     subscriptions: Подписки
     charges: Оплаты

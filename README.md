@@ -25,11 +25,11 @@
 * yarn
 
 ### Connected services required
-* AWS S3 - file storage ** in production **
-* Google oauth
-* Github oauth
-* Twitter oauth
-* Stripe
+* AWS S3 API - file storage ** in production **
+* Google oauth API
+* Github oauth API
+* Twitter oauth API
+* Stripe API
 
 ### Installing RoR
 

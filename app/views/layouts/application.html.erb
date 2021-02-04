@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= favicon_link_tag "tree favicon yellow.png" %>
+    <%= favicon_link_tag "favicon.png" %>
     <link rel="manifest" href="/manifest.json">
     <title>
       <% if ActsAsTenant.current_tenant %>
-        <%= ActsAsTenant.current_tenant %> | CorsegoSaaS
+        <%= ActsAsTenant.current_tenant %> | Corsego
       <% else %>
-        CorsegoSaaS - SaaS Multitenancy boilerplate for Ruby on Rails
+        Corsego - SaaS Multitenancy boilerplate for Ruby on Rails
       <% end %>
     </title>
     <%= csrf_meta_tags %>
