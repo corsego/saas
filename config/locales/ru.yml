@@ -61,7 +61,7 @@ ru:
       charge: 
         id: код
         metadata: подробности
-        activate_subscription: активировать подписку
+        activate_subscription: возобновить подписку
         created_at: дата создания
         tenant: организация
         subscription: подписка
