@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%= favicon_link_tag "tree favicon yellow.png" %>
+    <%= favicon_link_tag "favicon.png" %>
     <link rel="manifest" href="/manifest.json">
     <title>CorsegoSaaS</title>
     <%= csrf_meta_tags %>
@@ -13,7 +13,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= flash_messages %>
+    <%= render 'layouts/messages' %>
     <div class="container">
       <p></p>
       <%= yield %>
