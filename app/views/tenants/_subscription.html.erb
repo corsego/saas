@@ -47,7 +47,7 @@
     <hr>
 
     <% if @plan.amount > 0 %>
-      <%= form_tag charges_path, method: :post do %>
+      <%= form_tag charge_path, method: :post do %>
         <script class="stripe-button" 
           data-amount="<%= @plan.amount %>" 
           data-description="<%= current_tenant.name %>" 
@@ -58,7 +58,7 @@
         </script>
       <% end %>
     <% else %>
-      <%= button_to Charge.human_attribute_name(:activate_subscription).capitalize, charges_path, method: :post %>
+      <%= button_to Charge.human_attribute_name(:activate_subscription).capitalize, charge_path, method: :post %>
     <% end %>
 
     <hr>
