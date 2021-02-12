@@ -41,6 +41,9 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create, :destroy]
   resources :charges, only: [:create]
+  # post "subscribable/subscribe", to: "subscribable#subscribe", as: :subscriptions
+  # delete "subscribable/unsubscribe", to: "subscribable#unsubscribe", as: :subscription
+  # post "subscribable/charge", to: "subscribable#charge", as: :charges
 
   resources :members, except: [:create, :new] do
     get :invite, on: :collection

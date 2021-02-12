@@ -141,4 +141,27 @@ git push heroku master
 heroku run rails db:migrate
 ```
 
+How to create a copy of the repo (not fork) with saving the commit history:
+[https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
+
 If you have troubles running the app or any questions don't hesitate to contact me at hello@corsego.com 🧐 
+
+# TODO
+
+* refactor subscriptions and charges controller
+* 
+
+<% identities = @user.identities.pluck(:provider).map(&:to_sym).intersection(User.omniauth_providers) %>
+<% identities = @user.identities.select{ |identity| identity.provider == provider.to_s } %>
+
+<%= @user.identities.pluck(:provider).intersection(User.omniauth_providers.to_s) %>
+<%= @user.identities.pluck(:provider).include?(provider.to_s) %>
+<% identities = @user.identities.pluck(:provider).include?(provider.to_s) %>
+
+User.find_by(email: "elviramamedo@gmail.com").identities.pluck(:provider).map(&:to_sym)
+ => ["google_oauth2"] 
+Devise.omniauth_configs.keys
+ => [:google_oauth2, :github] 
+
+# to add - can delete if more than one member
+# to add - can not delete self if only admin

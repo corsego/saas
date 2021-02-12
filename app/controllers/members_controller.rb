@@ -67,6 +67,8 @@ class MembersController < ApplicationController
 
   def set_member
     @member = Member.friendly.find(params[:id])
+    # decrease search scope
+    # @member = current_tenant.members.friendly.find(params[:id])
   end
 
   def member_params
