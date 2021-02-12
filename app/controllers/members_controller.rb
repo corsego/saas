@@ -59,8 +59,12 @@ class MembersController < ApplicationController
   end
 
   def destroy
-    @member.destroy
-    redirect_to members_url, notice: "Member was successfully destroyed."
+    if current_tenant.members.size == 1
+      redirect_to members_url, alert: "Can not delete only member. Try deleting tenant."
+    else
+      @member.destroy
+      redirect_to members_url, notice: "Member was successfully destroyed."
+    end
   end
 
   private

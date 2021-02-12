@@ -163,5 +163,4 @@ User.find_by(email: "elviramamedo@gmail.com").identities.pluck(:provider).map(&:
 Devise.omniauth_configs.keys
  => [:google_oauth2, :github] 
 
-# to add - can delete if more than one member
 # to add - can not delete self if only admin
