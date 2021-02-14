@@ -15,7 +15,7 @@
 
       <% unless user_signed_in? %>
         <% User.omniauth_providers.each do |provider| %>
-          <%= link_to omniauth_authorize_path(User, provider), class: "btn btn-md btn-outline-#{social_color(provider)}", data: { disable_with: "#{t("users.show.connecting")}..." } do %>
+          <%= link_to omniauth_authorize_path(User, provider), method: :post, class: "btn btn-md btn-outline-#{social_color(provider)}", data: { disable_with: "#{t("users.show.connecting")}..." } do %>
             Sign in with
             <%= social_icon(provider) %>
           <% end %>

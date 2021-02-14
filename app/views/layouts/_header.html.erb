@@ -96,7 +96,7 @@
         </li>
 
         <% User.omniauth_providers.each do |provider| %>
-          <%= link_to social_icon(provider), omniauth_authorize_path(User, provider), class: "nav-link" %>
+          <%= link_to social_icon(provider), omniauth_authorize_path(User, provider), method: :post, class: "nav-link" %>
         <% end %>
 
       </ul>

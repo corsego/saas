@@ -23,11 +23,13 @@ group :development do
 end
 
 # multitenancy
-gem "devise"
+# gem "devise"
+gem "devise", github: "heartcombo/devise", branch: "master"
 gem "simple_form"
 gem "devise_invitable", "~> 2.0.0"
 gem "acts_as_tenant"
-gem "friendly_id"
+# replace with UUID by default?
+gem "friendly_id" 
 
 # storage
 gem "active_storage_validations" # tenant logo
@@ -39,13 +41,16 @@ end
 
 gem "invisible_captcha"
 
+# gem "omniauth", "~> 1.9", ">= 1.9.1"
+# gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-github"
 gem "omniauth-twitter"
 gem 'omniauth-facebook'
+gem "omniauth-rails_csrf_protection"
 
 # additional functionality for importing contacts from social accounts
-gem "omnicontacts"
+gem "omnicontacts" 
 
 # i18n
 gem "rails-i18n", "~> 6.0.0" # For 6.0.0 or higher
