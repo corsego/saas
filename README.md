@@ -141,16 +141,37 @@ git push heroku master
 heroku run rails db:migrate
 ```
 
+****
+
 How to create a copy of the repo (not fork) with saving the commit history:
 [https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
 
 If you have troubles running the app or any questions don't hesitate to contact me at hello@corsego.com 🧐 
 
-# TODO
+****
 
-* refactor subscriptions and charges controller
-* 
+# TODO - prioriry
 
+* better stripe integration, refactor subscriptions and charges controller
+* can not delete self if only admin in a tenant
+* can not delete self if only superadmin?
+* subdomains? set tenant from session subdomain?
+* set tenant from session?
+
+# TODO - ideas
+* user.rb lockable
+* user has to accept invitation to become a member of a tenant?
+* user invitation can be cancelled?
+* improve omniauth ?
+
+# TODO - long-term
+
+* hotwire
+* ruby 3.0
+* tests
+
+notes for omniauth:
+```
 <% identities = @user.identities.pluck(:provider).map(&:to_sym).intersection(User.omniauth_providers) %>
 <% identities = @user.identities.select{ |identity| identity.provider == provider.to_s } %>
 
@@ -162,5 +183,13 @@ User.find_by(email: "elviramamedo@gmail.com").identities.pluck(:provider).map(&:
  => ["google_oauth2"] 
 Devise.omniauth_configs.keys
  => [:google_oauth2, :github] 
+```
 
-# to add - can not delete self if only admin
+# SaaS ideas:
+
+* Remote worker inventory management
+* Content planning & posting tool
+* Telehealth
+* Collaboration (Trello)
+* Appointments (calendly / booksy)
+* CRM (KANBAN Trello for people)

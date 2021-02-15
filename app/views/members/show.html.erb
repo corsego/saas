@@ -2,8 +2,7 @@
 <div class="card shadow">
   <div class="card-header">
     <h4>
-      <strong><%= model_class.human_attribute_name(:id).capitalize %>:</strong>
-      <%= @member.id %>
+      <%= model_class.model_name.human.titleize %>
     </h4>
   </div>
   <div class="card-body">
