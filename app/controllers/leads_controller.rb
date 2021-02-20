@@ -3,7 +3,7 @@ class LeadsController < ApplicationController
   layout "errors"
 
   set_current_tenant_through_filter
-  before_action :set_tenant, only: [:new, :show, :create]
+  before_action :set_tenant, only: %i[new show create]
 
   def new
     @contact = Contact.new

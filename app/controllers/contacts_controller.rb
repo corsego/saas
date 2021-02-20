@@ -4,9 +4,8 @@ class ContactsController < ApplicationController
   include SetCurrentMember # for role-based authorization. @current_member.admin?
   include RequireActiveSubscription # no access unless tenant has an active subscription
 
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
-  before_action :require_tenant_admin_or_editor, only: [:edit, :update, :destroy]
+  before_action :set_contact, only: %i[show edit update destroy]
+  before_action :require_tenant_admin_or_editor, only: %i[edit update destroy]
 
   def import
     @contacts = request.env["omnicontacts.contacts"]

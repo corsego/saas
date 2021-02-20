@@ -3,7 +3,7 @@ class ChargesController < ApplicationController
   include RequireTenant # no current_tenant = no access to entire controller. redirect to root
   include SetCurrentMember # for role-based authorization. @current_member.admin?
 
-  before_action :require_subscription, only: [:charge]
+  before_action :require_subscription, only: %i[charge]
 
   def charge
     @subscription = current_tenant.subscription

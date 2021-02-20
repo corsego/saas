@@ -1,5 +1,5 @@
 class PlansController < ApplicationController
-  before_action :set_plan, only: [:edit, :update, :destroy]
+  before_action :set_plan, only: %i[edit update destroy]
 
   def index
     @q = Plan.ransack(params[:q])

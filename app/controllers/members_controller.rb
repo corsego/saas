@@ -4,9 +4,8 @@ class MembersController < ApplicationController
   include SetCurrentMember # for role-based authorization. @current_member.admin?
   include RequireActiveSubscription # no access unless tenant has an active subscription
 
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
-
-  before_action :require_tenant_admin, only: [:invite, :edit, :update, :destroy]
+  before_action :set_member, only: %i[show edit update destroy]
+  before_action :require_tenant_admin, only: %i[invite edit update destroy]
 
   def index
     @q = Member.ransack(params[:q])

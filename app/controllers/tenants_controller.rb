@@ -1,7 +1,7 @@
 class TenantsController < ApplicationController
-  before_action :set_tenant, only: [:show, :edit, :update, :destroy, :switch]
-  before_action :require_tenant_admin, only: [:edit, :update, :destroy]
-  before_action :require_tenant_member, only: [:show]
+  before_action :set_tenant, only: %i[show edit update destroy switch]
+  before_action :require_tenant_admin, only: %i[edit update destroy]
+  before_action :require_tenant_member, only: %i[show]
 
   def index
     @q = current_user.tenants.order(created_at: :desc).ransack(params[:q])
