@@ -154,15 +154,20 @@ If you have troubles running the app or any questions don't hesitate to contact 
 
 * better stripe integration, refactor subscriptions and charges controller
 * can not delete self if only admin in a tenant
-* can not delete self if only superadmin?
-* subdomains? set tenant from session subdomain?
-* set tenant from session?
+* complete i18n coverage
+* plan/form - explicitly say `price_cents`
 
 # TODO - ideas
-* user.rb lockable
+* can not delete self if only superadmin?
+* option to set tenant from session subdomain?
+* option to set tenant from session?
+* plan - replace hard-coded `max_members` to `restrictions`?
+* user.rb lockable, bannable, deletable,
 * user has to accept invitation to become a member of a tenant?
-* user invitation can be cancelled?
-* improve omniauth ?
+* improve omniauth flow? (social email changed, but identity connected to old user model)
+* application.scss loaded in 2 places. not best approach?
+* form_with instead of simple_form?
+* uuid instead of friendly_id?
 
 # TODO - long-term
 

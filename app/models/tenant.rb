@@ -25,12 +25,6 @@ class Tenant < ApplicationRecord
 
   extend FriendlyId
   friendly_id :name, use: [:slugged, :history]
-  def should_generate_new_friendly_id?
-    # will change the slug if the name changed
-    # source https://www.rubydoc.info/github/norman/friendly_id/FriendlyId%2FSlugged:should_generate_new_friendly_id%3F
-    # https://norman.github.io/friendly_id/FriendlyId/History.html
-    name_changed?
-  end
 
   has_one_attached :logo
   validates :logo, content_type: [:png, :jpg, :jpeg],
