@@ -161,6 +161,7 @@ If you have troubles running the app or any questions don't hesitate to contact 
 * option to set tenant by subdomain?
 * Improve current PWA functionality?
 * subscriptions: trial period option?
+* better dark mode css. & here you start thinking of tailwind...
 
 ### TODO - ideas
 
@@ -168,7 +169,8 @@ If you have troubles running the app or any questions don't hesitate to contact 
 * plan/form - explicitly say `price_cents`
 * user has to accept/reject invitation to become a member of a tenant? - would be good
 * improve omniauth flow? (social email changed, but identity connected to old user model) - would be good
-* form_with instead of simple_form?
+* better SEO from the box - would be good
+* form_with instead of simple_form? - to think alongside hotwire
 * omniauth - one email per user (current), or many emails per user? - to think
 * application.scss loaded in 2 places: not best approach? - to think
 * plan - replace hard-coded `max_members` to `restrictions`? - needed?
@@ -196,6 +198,18 @@ Possible disadvantages of setting tenant by `current_user.tenant_id` column:
 Are there any disadvantages in setting tenant in `session` without having `current_user.tenant_id` column?
 
 Disadvantages of subdomain multitenancy - [link](https://www.reddit.com/r/rails/comments/lidwap/realworld_possible_issues_with_subdomain/)
+
+Not adding ActionText by default - users can add it themselves if they need. Not overbloating the MVP.
+
+Tailwind? I think it is not mature enough.
+
+HAML? I personally prefer haml over erb. 
+This app uses erb so that it is more approachable to the general public.
+You can easily convert erb to haml with `gem "haml-rails"`.
+
+By default, the app uses as little custom css and js as possible
+
+If you are interested in playing around other multitenancy gems, I recommend [activerecord-multi-tenant](https://github.com/citusdata/activerecord-multi-tenant)
 
 ### These features should not be part of the core app:
 
