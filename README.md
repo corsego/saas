@@ -10,25 +10,26 @@
 4. Internationalization (i18n) - whole translation guide
 5. Authorization (role-based access) without any gems
 6. ActiveStorage and AWS S3 - upload files to cloud storage
-7. Omnicontacts - feature to import google contacts
-8. Plan-based restrictions - limit access to different features
-9. Admin dashboard - build an admin interface without any gems
-10. Subscriptions engine - fully integrate the SaaS business model
-11. Stripe integration - receive subscription payments from users
+7. Plan-based restrictions - limit access to different features
+8. Admin dashboard - build an admin interface without any gems
+9. Subscriptions engine - fully integrate the SaaS business model
+10. Stripe integration - receive subscription payments from users
+11. BONUS: Omnicontacts - feature to import google contacts
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
 ### Installation Requirements 
 * ruby v 2.7.2 +
-* rails 6.0.3 +
+* rails 6.1.0 +
 * postgresql database
 * yarn
 
 ### Connected services required
 * AWS S3 API - file storage ** in production **
-* Google oauth API
-* Github oauth API
-* Twitter oauth API
+* Amazon SES for sending emails ** in production ** 
+* Google oAuth API
+* Github oAuth API
+* Twitter oAuth API
 * Stripe API
 
 ### Installing RoR
@@ -36,7 +37,7 @@
 ```
 rvm install ruby-2.7.2
 rvm --default use 2.7.2
-gem install rails -v 6.0.3
+gem install rails -v 6.1.0
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 sudo apt update
@@ -61,9 +62,9 @@ git clone https://github.com/corsego/saas
 cd saas
 bundle
 yarn
-
 ```
-2. IMPORTANT Set up your secret credentials, otherwise you will not be able to run the app:
+
+2. IMPORTANT: Set up your secret credentials, otherwise you might not be able to run the app:
 
 Go to **config** folder and delete the file `credentials.yml.enc`
 ```
@@ -101,6 +102,8 @@ twitter:
    id: YOUR_CODE
    secret: YOUR_CODE
 ```
+
+Working with VIM:
 * `i` = to make the file editable
 * :set paste = to disable autoindentation when pasting
 * `Ctrl` + `V` = to paste
@@ -135,7 +138,6 @@ heroku rename *your-app-name*
 heroku git:remote -a *your-app-name*
 heroku buildpacks:set heroku/ruby
 heroku buildpacks:add -i 1 https://github.com/heroku/heroku-buildpack-activestorage-preview
-heroku addons:create sendgrid:starter
 heroku config:set RAILS_MASTER_KEY=`cat config/master.key`
 git push heroku master
 heroku run rails db:migrate
@@ -143,37 +145,50 @@ heroku run rails db:migrate
 
 ****
 
-How to create a copy of the repo (not fork) with saving the commit history:
+How to MIRROR the repo (not fork) - create a copy with saving the commit history:
 [https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
 
 If you have troubles running the app or any questions don't hesitate to contact me at hello@corsego.com 🧐 
 
 ****
 
-# TODO - prioriry
+### TODO - prioriry
 
 * better stripe integration, refactor subscriptions and charges controller
-* can not delete self if only admin in a tenant
-* complete i18n coverage
-* plan/form - explicitly say `price_cents`
-
-# TODO - ideas
-* can not delete self if only superadmin?
-* option to set tenant from session subdomain?
-* option to set tenant from session?
-* plan - replace hard-coded `max_members` to `restrictions`?
-* user.rb lockable, bannable, deletable,
-* user has to accept invitation to become a member of a tenant?
-* improve omniauth flow? (social email changed, but identity connected to old user model)
-* application.scss loaded in 2 places. not best approach?
-* form_with instead of simple_form?
-* uuid instead of friendly_id?
-
-# TODO - long-term
-
 * hotwire
+* complete i18n coverage
+* option to set tenant by subdomain?
+
+### TODO - ideas
+
+* can not delete self if only admin in a tenant
+* plan/form - explicitly say `price_cents`
+* user has to accept/reject invitation to become a member of a tenant? - would be good
+* improve omniauth flow? (social email changed, but identity connected to old user model) - would be good
+* form_with instead of simple_form?
+* omniauth - one email per user (current), or many emails per user? - to think
+* application.scss loaded in 2 places: not best approach? - to think
+* plan - replace hard-coded `max_members` to `restrictions`? - needed?
+* user can not delete self if only superadmin? - needed?
+* user.rb lockable, bannable, deletable? - needed?
+* uuid instead of friendly_id? - needed?
+* add ransack & pagy-nation to scaffold templates? - needed?
+* stimulus by default? - needed?
+* option to set tenant from session? - does not add value
+
+### TODO - long-term
+
 * ruby 3.0
 * tests
+* developer wiki
+
+****
+
+### Notes
+
+Possible disadvantages of setting tenant by current_user.tenant_id column:
+* One user can not open 2 tenants in 2 different tabs 
+* Tenant is not visible in the URL
 
 notes for omniauth:
 ```
