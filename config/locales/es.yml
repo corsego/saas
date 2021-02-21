@@ -2,10 +2,10 @@ es:
   helpers:
     links:
       edit: editar
-      destroy: destruir
+      destroy: eliminar
       back: volver
       show: ver
-      confirm: eres seguro?
+      confirm: estás seguro?
     titles:
       edit: actualizar
       new: crear
@@ -26,11 +26,11 @@ es:
     terms: Términos de servicio
     privacy: Política de privacidad
     plans: Programas
-    subscriptions: Suscripciónes
+    subscriptions: Suscripciones
     charges: Pagos
 
   sidebar:
-    dashboard: Tablero
+    dashboard: Panel de Control
     members: Miembros
     contacts: Contactos
 
@@ -44,7 +44,7 @@ es:
       charge: Pago
     attributes:
       subscription:
-        subscription: suscripcion
+        subscription: suscripción
         ends_in: terminará en
         plan: programa
         tenant: empresa
@@ -57,26 +57,26 @@ es:
         amount: precio
         currency: moneda
         interval: periodo
-        max_members: miembros máximos
+        max_members: máximo de miembros
       charge: 
-        id: codigo
+        id: código
         metadata: metadata
         activate_subscription: activar suscripción
         created_at: creado
         tenant: empresa
-        subscription: suscripcion
+        subscription: suscripción
       tenant:
-        id: codigo
+        id: código
         name: nombre
         plan: programa
-        subscription: suscripcion
+        subscription: suscripción
         charges: pagos
         logo: logotipo
         users: usuarios
         members: miembros
         members_count: cantidad de miembros
       user:
-        id: codigo
+        id: código
         email: email
         image: imagen
         name: nombre
@@ -91,7 +91,7 @@ es:
         confirmed: confirmado
         time_zone: zona horaria
       member:
-        id: codigo
+        id: código
         user: usario
         tenant: empresa
         roles: derechos
@@ -102,34 +102,34 @@ es:
       select_a_plan: Seleccione un plan de suscripción
     switch:
       current_tenant: "Empresa seleccionada: %{tenant}"
-      no_rights: "No tienes derechos para ver: %{tenant}"
+      no_rights: "No tienes permisos para ver: %{tenant}"
     index:
       current_tenant: empresa activada
-      switch_tenant: cambiar empresa
+      switch_tenant: cambiar de empresa
     create:
       created: Empresa creada
     update:
       updated: Empresa actualizada
     destroy:
-      destroyed: Empresa destruida
-      cant_be_destroyed: Empresa he pagado. No se puede destruirla.
+      destroyed: Empresa eliminada
+      cant_be_destroyed: La Empresa ha pagado. No se puede eliminar.
     require_tenant_admin:
-      alert: No tienes derechos para editar, actualizar o destruir Empresa
+      alert: No tienes derechos para editar, actualizar o eliminar la Empresa
     require_tenant_member:
-      alert: No tienes derechos para ver Empresa
+      alert: No tienes derechos para ver la Empresa
 
   members:
     index:
-     max_members_for_subscription_reached: Se alcanza la cantidad máxima de miembros para su plan de suscripción
+     max_members_for_subscription_reached: Se ha alcanzado la cantidad máxima de miembros para su plan de suscripción
      only_admin_can_invite_members: Solo el administrador puede invitar a miembros
      invite: Invitar
      resend_invitation: Reinvitar
 
   users:
     show:
-      connect: Connectar
-      connecting: Connectando
-      connected: Connectado
+      connect: Conectar
+      connecting: Conectando
+      connected: Conectado
       ago: antes
       invitations: invitaciones
 
@@ -137,7 +137,6 @@ es:
     pricing:
       title: Precios
       subscribe: Suscribir
-      contact_admin_to_subscribe: "Comuníquese con un administrador de %{tenant} para suscribir"
+      contact_admin_to_subscribe: "Comuníquese con un administrador de %{tenant} para suscribirse"
       create_a_tenant_to_select_plan: Crea una empresa para seleccionar una suscripción
       you_already_are_subscribed: Ya estas suscrito
-
