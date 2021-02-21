@@ -55,6 +55,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def identity_params
+    # to see detailed info from the hash: <%= identity.auth["info"]["nickname"] %>
+    # auth_hash = auth.to_hash
+    # auth_hash.delete("credentials")
+    # auth_hash["extra"]&.delete("access_token")
     {
       provider: auth.provider,
       uid: auth.uid,

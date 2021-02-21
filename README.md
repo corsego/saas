@@ -14,7 +14,8 @@
 8. Admin dashboard - build an admin interface without any gems
 9. Subscriptions engine - fully integrate the SaaS business model
 10. Stripe integration - receive subscription payments from users
-11. BONUS: Omnicontacts - feature to import google contacts
+11. BONUS: PWA from the box!
+12. BONUS: Omnicontacts - feature to import google contacts
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
@@ -158,6 +159,8 @@ If you have troubles running the app or any questions don't hesitate to contact 
 * hotwire
 * complete i18n coverage
 * option to set tenant by subdomain?
+* Improve current PWA functionality?
+* subscriptions: trial period option?
 
 ### TODO - ideas
 
@@ -186,9 +189,30 @@ If you have troubles running the app or any questions don't hesitate to contact 
 
 ### Notes
 
-Possible disadvantages of setting tenant by current_user.tenant_id column:
+Possible disadvantages of setting tenant by `current_user.tenant_id` column:
 * One user can not open 2 tenants in 2 different tabs 
 * Tenant is not visible in the URL
+
+Are there any disadvantages in setting tenant in `session` without having `current_user.tenant_id` column?
+
+Disadvantages of subdomain multitenancy - [link](https://www.reddit.com/r/rails/comments/lidwap/realworld_possible_issues_with_subdomain/)
+
+### These features should not be part of the core app:
+
+* User feedback 
+* Feature voting
+* Forum
+* User wiki
+* User onboarding
+* Company blog
+* Announcements
+
+Why? 
+* features are not core business
+* features are too big to implement in high-quality
+* features can be covered by an external service
+
+****
 
 notes for omniauth:
 ```
