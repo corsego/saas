@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  def resend_invitation # link in members#index
+  # link in members#index
+  def resend_invitation
     # This logic is not in membres_controller, because it does not require any member-specific data to work.
     @user = User.find(params[:id])
     if @user.invitation_accepted_at.present?

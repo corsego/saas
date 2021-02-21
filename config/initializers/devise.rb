@@ -321,16 +321,16 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   if Rails.application.credentials[Rails.env.to_sym].present? && Rails.application.credentials[Rails.env.to_sym][:github].present?
-    config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret] 
+    config.omniauth :github, Rails.application.credentials[Rails.env.to_sym][:github][:id], Rails.application.credentials[Rails.env.to_sym][:github][:secret]
   end
   if Rails.application.credentials[:google].present?
-    config.omniauth :google_oauth2, Rails.application.credentials[:google][:id], Rails.application.credentials[:google][:secret] 
+    config.omniauth :google_oauth2, Rails.application.credentials[:google][:id], Rails.application.credentials[:google][:secret]
   end
   if Rails.application.credentials[:facebook].present?
-    config.omniauth :facebook, Rails.application.credentials[:facebook][:id], Rails.application.credentials[:facebook][:secret] 
+    config.omniauth :facebook, Rails.application.credentials[:facebook][:id], Rails.application.credentials[:facebook][:secret]
   end
   if Rails.application.credentials[:twitter].present?
-    config.omniauth :twitter, Rails.application.credentials[:twitter][:id], Rails.application.credentials[:twitter][:secret] 
+    config.omniauth :twitter, Rails.application.credentials[:twitter][:id], Rails.application.credentials[:twitter][:secret]
   end
 
   # ==> Warden configuration

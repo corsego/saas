@@ -35,5 +35,4 @@ class Tenant < ApplicationRecord
   def can_invite_members?
     members_count < plan.max_members
   end
-
 end

@@ -51,5 +51,4 @@ class ChargesController < ApplicationController
       redirect_to pricing_path, alert: "Please select a plan to access the app"
     end
   end
-
 end

@@ -30,5 +30,4 @@ class Member < ApplicationRecord
   friendly_id :to_s, use: :slugged
 
   include Roleable
-
 end

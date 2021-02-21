@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def dark_mode_helper
     if cookies[:theme] == "light"
       link_to root_path(theme: "dark"), class: "btn btn-sm btn-outline-secondary" do
@@ -11,7 +10,6 @@ module ApplicationHelper
       end
     end
   end
-
 
   # boolean green or red
   def boolean_label(value)
