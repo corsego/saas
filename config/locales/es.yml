@@ -105,7 +105,7 @@ es:
       no_rights: "No tienes permisos para ver: %{tenant}"
     index:
       current_tenant: empresa activada
-      switch_tenant: cambiar de empresa
+      switch_tenant: seleccionar empresa
     create:
       created: Empresa creada
     update:

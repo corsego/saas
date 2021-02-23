@@ -162,6 +162,7 @@ If you have troubles running the app or any questions don't hesitate to contact 
 * Improve current PWA functionality?
 * subscriptions: trial period option?
 * better dark mode css. & here you start thinking of tailwind...
+* bootstrap css - sidebar to collapse into navbar based on screen size
 
 ### TODO - ideas
 
@@ -191,6 +192,28 @@ If you have troubles running the app or any questions don't hesitate to contact 
 
 ### Notes
 
+SaaS subscriptions flow: 
+* to access app functionality (specific controllers), a user has to be subscribed with an active subscription.
+* user selects plan and creates subscription with an `ends_at: Time.now`.
+* a subscription is `active` if the `ends_at` is in the future.
+* to activate/resume subscription, user has to pay `Plan.amount`
+* one-time payment via Stripe.
+* if payment is successful, `subscription.ends_at` is delayed by `Plan.interval`
+* if a user cancels a subscription, subscription is deleted & he can not access the specific controllers.
+
+Benefits:
+* Most simple approach to subscriptions
+* User controls his expences: only one-time payments. Good for user.
+Drawbacks:
+* No automatic payments: the user has to manually create a payment. Bad for business
+* No trial period option (yet?)
+
+Stripe integration is currently working but outdated. Future options:
+1. implement [https://github.com/pay-rails/pay](https://github.com/pay-rails/pay)
+2. implement stripe checkout directly
+
+****
+
 Possible disadvantages of setting tenant by `current_user.tenant_id` column:
 * One user can not open 2 tenants in 2 different tabs 
 * Tenant is not visible in the URL
@@ -198,6 +221,8 @@ Possible disadvantages of setting tenant by `current_user.tenant_id` column:
 Are there any disadvantages in setting tenant in `session` without having `current_user.tenant_id` column?
 
 Disadvantages of subdomain multitenancy - [link](https://www.reddit.com/r/rails/comments/lidwap/realworld_possible_issues_with_subdomain/)
+
+Want to disable invitations? Just don't create Plans that allow more than 1 member.
 
 Not adding ActionText by default - users can add it themselves if they need. Not overbloating the MVP.
 
