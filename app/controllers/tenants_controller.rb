@@ -35,12 +35,12 @@ class TenantsController < ApplicationController
 
   def create
     @tenant = Tenant.new(tenant_params)
-
     if @tenant.save
       # when a tenant is created, the creator becomes a member
       @member = Member.create!(tenant: @tenant, user: current_user, admin: true)
       # when a tenant is created, the creator sets it as current_tenant
       current_user.update_attribute(:tenant_id, @tenant.id)
+      create_stripe_customer(@tenant, current_user)
       redirect_to @tenant, notice: t(".created")
     else
       render :new
@@ -71,7 +71,7 @@ class TenantsController < ApplicationController
   end
 
   def tenant_params
-    params.require(:tenant).permit(:name, :plan, :logo)
+    params.require(:tenant).permit(:name, :logo)
   end
 
   def require_tenant_admin
@@ -86,4 +86,20 @@ class TenantsController < ApplicationController
       redirect_to tenants_path, alert: t("tenants.require_tenant_member.alert")
     end
   end
+
+  # stripe
+  def create_stripe_customer(tenant, user)
+    customer = Stripe::Customer.create(
+      email: user.email,
+      metadata: {
+        user_id: user.id,
+        user_email: user.email,
+        tenant_id: tenant.id,
+        tenant_name: tenant.name
+      }
+    )
+    tenant.update!(stripe_customer_id: customer.id)
+    customer
+  end
+
 end
