@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   end
   get "dashboard", to: "tenant#dashboard"
 
+  resources :customer_portal_sessions, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   post "charges/charge", to: "charges#charge", as: :charge
   # post "subscribable/subscribe", to: "subscribable#subscribe", as: :subscriptions
