@@ -203,10 +203,11 @@ SaaS subscriptions flow:
 
 Benefits:
 * Most simple approach to subscriptions
-* User controls his expences: only one-time payments. Good for user.
+* User controls his expences: only one-time payments. Good for user budget control :)
 Drawbacks:
-* No automatic payments: the user has to manually create a payment. Bad for business
+* No automatic payments: the user has to manually create a payment. Bad for SaaS business.
 * No trial period option (yet?)
+* Cancelling subscription right now (not at the end of the billing period); No prorating.
 
 Stripe integration is currently working but outdated. Future options:
 1. implement [https://github.com/pay-rails/pay](https://github.com/pay-rails/pay)
@@ -251,24 +252,7 @@ Why?
 * features are too big to implement in high-quality
 * features can be covered by an external service
 
-****
-
-notes for omniauth:
-```
-<% identities = @user.identities.pluck(:provider).map(&:to_sym).intersection(User.omniauth_providers) %>
-<% identities = @user.identities.select{ |identity| identity.provider == provider.to_s } %>
-
-<%= @user.identities.pluck(:provider).intersection(User.omniauth_providers.to_s) %>
-<%= @user.identities.pluck(:provider).include?(provider.to_s) %>
-<% identities = @user.identities.pluck(:provider).include?(provider.to_s) %>
-
-User.find_by(email: "elviramamedo@gmail.com").identities.pluck(:provider).map(&:to_sym)
- => ["google_oauth2"] 
-Devise.omniauth_configs.keys
- => [:google_oauth2, :github] 
-```
-
-# SaaS ideas:
+### SaaS ideas:
 
 * Remote worker inventory management
 * Content planning & posting tool
@@ -276,3 +260,22 @@ Devise.omniauth_configs.keys
 * Collaboration (Trello)
 * Appointments (calendly / booksy)
 * CRM (KANBAN Trello for people)
+
+### ~~Competitors~~ Similar Ruby on Rails solutions
+
+I don't think that corsego/saas & the other tools should be considered competitors: 
+
+I think they can be considered **complimentary** purchases🤯
+
+Each solution has its' own advantages and disadvantages.
+
+By seeing their differences you can create the ideal setup for you.
+
+* jumpstartrails.com - Good
+* github.com/archonic/limestone-accounts - Good
+* bullettrain.co - overpriced
+* www.getsjabloon.com - N/A
+* hixonrails.com - N/A
+* buildasaasappinrails.com - big NO
+
+All the above tools are inspired by spark.laravel.com
