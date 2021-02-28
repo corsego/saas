@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_25_145128) do
+ActiveRecord::Schema.define(version: 2021_02_28_172148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,20 +51,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_145128) do
     t.text "metadata"
     t.index ["subscription_id"], name: "index_charges_on_subscription_id"
     t.index ["tenant_id"], name: "index_charges_on_tenant_id"
-  end
-
-  create_table "contacts", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "phone_number"
-    t.string "email"
-    t.bigint "tenant_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "source"
-    t.string "import_id"
-    t.string "created_session_id"
-    t.index ["tenant_id"], name: "index_contacts_on_tenant_id"
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -117,7 +103,9 @@ ActiveRecord::Schema.define(version: 2020_12_25_145128) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "members_count", default: 0, null: false
+    t.string "stripe_customer_id"
     t.index ["slug"], name: "index_tenants_on_slug", unique: true
+    t.index ["stripe_customer_id"], name: "index_tenants_on_stripe_customer_id", unique: true
   end
 
   create_table "user_identities", force: :cascade do |t|
@@ -177,7 +165,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_145128) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "charges", "subscriptions"
   add_foreign_key "charges", "tenants"
-  add_foreign_key "contacts", "tenants"
   add_foreign_key "members", "tenants"
   add_foreign_key "members", "users"
   add_foreign_key "subscriptions", "plans"

@@ -32,6 +32,7 @@ gem "devise_invitable", "~> 2.0.0"
 gem "acts_as_tenant"
 # replace with UUID by default?
 gem "friendly_id"
+gem "ransack", github: "activerecord-hackery/ransack" # sort and search 
 
 # storage
 gem "active_storage_validations" # tenant logo
@@ -51,12 +52,8 @@ gem "omniauth-twitter"
 gem "omniauth-facebook"
 gem "omniauth-rails_csrf_protection" # for omniauth 2.0
 
-gem "omnicontacts" # additional functionality for importing contacts from social accounts
-
 # i18n
-gem "rails-i18n", "~> 6.0.0" # For 6.0.0 or higher
+gem "rails-i18n", "~> 6.0.0"
 gem "devise-i18n"
 
 gem "stripe"
-
-gem "ransack", github: "activerecord-hackery/ransack"

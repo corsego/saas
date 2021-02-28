@@ -141,7 +141,6 @@ GEM
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
-    json (2.5.1)
     jwt (2.2.2)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -198,9 +197,6 @@ GEM
       omniauth (~> 2.0)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
-      rack
-    omnicontacts (0.3.10)
-      json
       rack
     orm_adapter (0.5.0)
     parallel (1.20.1)
@@ -349,7 +345,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   omniauth-twitter
-  omnicontacts
   pg (>= 0.18, < 2.0)
   puma (~> 4.1)
   rails (~> 6.1.0)
