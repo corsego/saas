@@ -40,6 +40,11 @@ Rails.application.routes.draw do
   end
   get "dashboard", to: "tenant#dashboard"
 
+  scope '/checkout' do
+    post 'create', to: 'checkout#create', as: 'checkout_create'
+    get 'cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+    get 'success', to: 'checkout#success', as: 'checkout_success'
+  end
   resources :customer_portal_sessions, only: [:create]
   resources :subscriptions, only: [:create, :destroy]
   post "charges/charge", to: "charges#charge", as: :charge
