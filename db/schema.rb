@@ -103,9 +103,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_172148) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "members_count", default: 0, null: false
-    t.string "stripe_customer_id"
     t.index ["slug"], name: "index_tenants_on_slug", unique: true
-    t.index ["stripe_customer_id"], name: "index_tenants_on_stripe_customer_id", unique: true
   end
 
   create_table "user_identities", force: :cascade do |t|
