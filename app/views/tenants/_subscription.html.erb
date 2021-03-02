@@ -47,6 +47,8 @@
     <hr>
 
     <% if @plan.amount > 0 %>
+      <%= button_to "Checkout", checkout_create_path, params: { id: @tenant.id }, remote: true %>
+
       <%= form_tag charge_path, method: :post do %>
         <script class="stripe-button" 
           data-amount="<%= @plan.amount %>" 

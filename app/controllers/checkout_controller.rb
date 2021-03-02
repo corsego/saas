@@ -1,40 +1,27 @@
 # frozen_string_literal: true
 
 class CheckoutController < ApplicationController
+  include SetTenant # include ON TOP of controller that has to be scoped
+  include RequireTenant # no current_tenant = no access to entire controller. redirect to root
   # https://github.com/StungEye-RRC/Stripe-It-Up
   def create
-    product = Tenant.find(params[:id])
+    tenant = Tenant.find(params[:id])
 
-    if product.nil?
+    if tenant.nil?
       redirect_to root_path
       return
     end
 
     @session = Stripe::Checkout::Session.create(
+      customer: current_tenant.stripe_customer_id,
       payment_method_types: ['card'],
-      line_items: [
-        {
-          name: product.name,
-          description: product.name,
-          amount: product.plan.amount,
-          currency: 'cad',
+      line_items: [{
+          name: tenant.plan.name,
+          description: "max_members: #{tenant.plan.max_members}",
+          amount: tenant.plan.amount,
+          currency: tenant.plan.currency,
           quantity: 1
-        },
-        {
-          name: 'PST',
-          description: 'Manitoba Provincial Sales Tax',
-          amount: (product.plan.amount * 7 / 100.0).round.to_i,
-          currency: 'cad',
-          quantity: 1
-        },
-        {
-          name: 'GST',
-          description: 'Federal Goods and Services Tax',
-          amount: (product.plan.amount * 5 / 100.0).round.to_i,
-          currency: 'cad',
-          quantity: 1
-        }
-      ],
+      }],
       success_url: checkout_success_url + '?session_id={CHECKOUT_SESSION_ID}',
       cancel_url: checkout_cancel_url
     )
