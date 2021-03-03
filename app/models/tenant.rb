@@ -17,7 +17,6 @@ class Tenant < ApplicationRecord
 
   has_many :members, dependent: :destroy
   has_many :users, through: :members
-  has_many :contacts, dependent: :destroy
 
   def to_s
     name
