@@ -53,7 +53,8 @@ class User < ApplicationRecord
   has_many :invitees, class_name: "User", foreign_key: :invited_by_id
 
   # tenant_id = to get current_tenant; false = can exist without any tenants
-  belongs_to :tenant, required: false
+  # belongs_to :tenant, required: false
+  belongs_to :tenant, optional: true
 
   def to_s
     email
