@@ -50,6 +50,7 @@ class User < ApplicationRecord
   has_many :identities, dependent: :destroy
   has_many :members, dependent: :restrict_with_error
   has_many :tenants, through: :members
+  has_many :invitees, class_name: "User", foreign_key: :invited_by_id
 
   # tenant_id = to get current_tenant; false = can exist without any tenants
   belongs_to :tenant, required: false

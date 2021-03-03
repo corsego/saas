@@ -121,23 +121,25 @@
   </div>
 </div>
 
-<% if @invited_users.any? %>
-  <br>
-  
-  <div class="card shadow">
-    <div class="card-header">
-      <%= t(".invitations").capitalize %>:
-      <%= @invited_users.count %>
-    </div>
-    <div class="card-body">
-      <% @invited_users.each do |user| %>
-        <b><%= user.email %></b>
-        <%= model_class.human_attribute_name(:confirmed).capitalize %>:
-        <%= boolean_label(user.confirmed_at.present?) %>
-        <br/>
-      <% end %>
-    </div>
+<br>
+
+<div class="card shadow">
+  <div class="card-header">
+    <%= link_to new_user_invitation_path, class: "btn btn-sm btn-primary" do %>
+      <div class="fa fa-plus"></div>
+      <div class="fa fa-user"></div>
+      Invite User
+    <% end %>
+
   </div>
-<% end %>
+  <div class="card-body">
+    <% @user.invitees.each do |user| %>
+      <b><%= user.email %></b>
+      <%= model_class.human_attribute_name(:confirmed).capitalize %>:
+      <%= boolean_label(user.confirmed_at.present?) %>
+      <br/>
+    <% end %>
+  </div>
+</div>
 
 <br>

@@ -5,14 +5,13 @@
     <div class="badge badge-info">
       <%= @plans.count %>
     </div>
+      <%= link_to new_plan_path, class: 'btn btn-sm btn-primary' do %>
+        <i class="fas fa-plus"></i>
+        <%= t("helpers.titles.new").titleize %>
+        <%= model_class.model_name.human.titleize %>
+      <% end %>
   </div>
 </h3>
-
-<%= link_to new_plan_path, class: 'btn btn-info' do %>
-  <i class="fas fa-plus"></i>
-  <%= t("helpers.titles.new").titleize %>
-  <%= model_class.model_name.human.titleize %>
-<% end %>
 
 <p>
 

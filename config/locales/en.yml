@@ -131,7 +131,6 @@ en:
       connecting: Connecting
       connected: Connected
       ago: ago
-      invitations: invitations
 
   static_public:
     pricing:

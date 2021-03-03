@@ -131,7 +131,6 @@ ru:
       connecting: Вход
       connected: Выполнен вход
       ago: назад
-      invitations: приглашения
 
   static_public:
     pricing:
