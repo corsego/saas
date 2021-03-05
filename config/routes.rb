@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   end
   get "dashboard", to: "tenant#dashboard"
 
+  # webhooks
+  post "webhooks/create", to: "webhooks#create", as: :webhooks
   # checkout
   post 'checkout/create', to: 'checkout#create', as: 'checkout_create'
   get 'checkout/cancel', to: 'checkout#cancel', as: 'checkout_cancel'
