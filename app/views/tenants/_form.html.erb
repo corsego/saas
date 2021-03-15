@@ -4,7 +4,7 @@
     <div id="error_explanation">
       <h4>
         <%= pluralize(@tenant.errors.count, "error") %>
-        prohibited this @tenant from being saved:
+        prohibited this tenant from being saved:
       </h4>
       <ul>
         <% @tenant.errors.full_messages.each do |message| %>

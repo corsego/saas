@@ -14,6 +14,7 @@ class Tenant < ApplicationRecord
   validates :name, length: {in: 2..20}
   RESERVED_NAMES = %w[blog app pricing terms help support tenant tenants user users]
   validates :name, exclusion: {in: RESERVED_NAMES, message: "%{value} is reserved."}
+  validates :name, format: { with: /\A[a-z][a-z0-9\-]+[a-z0-9]\Z/, message: "contains invalid symbols" }
 
   has_many :members, dependent: :destroy
   has_many :users, through: :members
@@ -27,7 +28,7 @@ class Tenant < ApplicationRecord
 
   has_one_attached :logo
   validates :logo, content_type: [:png, :jpg, :jpeg],
-                   size: {less_than: 100.kilobytes, message: "Logo has to be under 100 kilobytes"}
+                   size: {less_than: 200.kilobytes, message: "Logo has to be under 200 kilobytes"}
 
   include Subscribable
 
