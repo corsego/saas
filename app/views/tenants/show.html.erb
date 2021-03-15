@@ -12,6 +12,11 @@
     <%= @tenant.name %>
     <br>
     <strong>
+      <%= model_class.human_attribute_name(:stripe_customer_id).capitalize %>:
+    </strong>
+    <%= @tenant.stripe_customer_id %>
+    <br>
+    <strong>
       <%= model_class.human_attribute_name(:members_count).capitalize %>:
     </strong>
     <%= @tenant.members_count %>
