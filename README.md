@@ -201,6 +201,11 @@ SaaS subscriptions flow:
 * if payment is successful, `subscription.ends_at` is delayed by `Plan.interval`
 * if a user cancels a subscription, subscription is deleted & he can not access the specific controllers.
 
+There are 2 payment collection methods:
+* send invoice - send an invoice that a customer has to manually pay
+* charge automatically - attempt to bill default connected credit card at period end
+=> The default subscription model in the app right now is more like **send invoice** where a user has to pay manually.
+
 Benefits:
 * Most simple approach to subscriptions
 * User controls his expences: only one-time payments. Good for user budget control :)
@@ -209,9 +214,9 @@ Drawbacks:
 * No trial period option (yet?)
 * Cancelling subscription right now (not at the end of the billing period); No prorating.
 
-Stripe integration is currently working but outdated. Future options:
-1. implement [https://github.com/pay-rails/pay](https://github.com/pay-rails/pay)
-2. implement stripe checkout directly
+Stripe integration is currently working but outdated (legacy checkout). 
+
+Work in process on migrating to the new Stripe Checkout Sessions.
 
 ****
 
@@ -251,6 +256,38 @@ Why?
 * features are not core business
 * features are too big to implement in high-quality
 * features can be covered by an external service
+
+### Adding a new table that belongs to tenant
+
+1. console
+```
+rails g scaffold projects name tenant:references
+```
+2. project.rb
+```
+  acts_as_tenant :tenant
+```
+3. `projects_controller.rb` - on the very TOP:
+```
+  include SetTenant # include ON TOP of controller that has to be scoped
+  include RequireTenant # no current_tenant = no access to entire controller. redirect to root
+  include SetCurrentMember # for role-based authorization. @current_member.admin?
+  include RequireActiveSubscription # no access unless tenant has an active subscription
+```
+4. `projects_controller.rb` - remove `tenant_id` from strong params
+
+That's it. Now to access the Projects table a user has to:
+* have a `current_user`
+* have a `current_tenant`
+* tenant subscription should be active 
+
+Whenever a `project` is created, it will be automatically assigned and scoped to the `current_tenant`
+
+### Alternative names to `tenant`:
+* account
+* team
+* workplace
+* organisation
 
 ### SaaS ideas:
 
