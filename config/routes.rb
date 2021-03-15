@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   post "charges/charge", to: "charges#charge", as: :charge
   # post "subscribable/subscribe", to: "subscribable#subscribe", as: :subscriptions
   # delete "subscribable/unsubscribe", to: "subscribable#unsubscribe", as: :subscription
+  post "customer_portal_sessions", to: "customer_portal_sessions#create"
 
   resources :members, except: [:create, :new] do
     get :invite, on: :collection
