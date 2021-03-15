@@ -45,6 +45,10 @@ Rails.application.routes.draw do
   # post "subscribable/subscribe", to: "subscribable#subscribe", as: :subscriptions
   # delete "subscribable/unsubscribe", to: "subscribable#unsubscribe", as: :subscription
   post "customer_portal_sessions", to: "customer_portal_sessions#create"
+  # stripe checkout
+  post 'checkout/create', to: 'checkout#create', as: 'checkout_create'
+  get 'checkout/cancel', to: 'checkout#cancel', as: 'checkout_cancel'
+  get 'checkout/success', to: 'checkout#success', as: 'checkout_success'
 
   resources :members, except: [:create, :new] do
     get :invite, on: :collection

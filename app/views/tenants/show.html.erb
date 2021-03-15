@@ -17,6 +17,7 @@
     <%= @tenant.stripe_customer_id %>
     <br>
     <%= button_to "Manage Billing", customer_portal_sessions_path, data: { disable_with: "validating..." } %>
+    <%= button_to "Checkout", checkout_create_path, params: { id: @tenant.id }, remote: true, data: { disable_with: "validating..." } %>
     <strong>
       <%= model_class.human_attribute_name(:members_count).capitalize %>:
     </strong>
