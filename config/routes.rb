@@ -42,13 +42,15 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create, :destroy]
   post "charges/charge", to: "charges#charge", as: :charge
-  # post "subscribable/subscribe", to: "subscribable#subscribe", as: :subscriptions
-  # delete "subscribable/unsubscribe", to: "subscribable#unsubscribe", as: :subscription
+
+  # stripe billing portal
   post "customer_portal_sessions", to: "customer_portal_sessions#create"
   # stripe checkout
   post 'checkout/create', to: 'checkout#create', as: 'checkout_create'
   get 'checkout/cancel', to: 'checkout#cancel', as: 'checkout_cancel'
   get 'checkout/success', to: 'checkout#success', as: 'checkout_success'
+  # stripe webhooks
+  post "webhooks", to: "webhooks#create"
 
   resources :members, except: [:create, :new] do
     get :invite, on: :collection
