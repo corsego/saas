@@ -27,6 +27,14 @@ class WebhooksController < ApplicationController
       customer = event.data.object
       @tenant = Tenant.find_by(stripe_customer_id: customer.id)
       @tenant.update(name: Time.now.strftime("%H:%M").to_s)
+    when 'customer.subscription.updated', 'customer.subscription.deleted', 'customer.subscription.created'
+      subscription = event.data.object
+      @tenant = Tenant.find_by(stripe_customer_id: subscription.customer)
+      @tenant.subscription.update(ends_at: Time.zone.at(subscription.current_period_end))
+      # @tenant.update(
+      #   subscription_status: subscription.status,
+      #   plan: subscription.items.data[0].price.lookup_key,
+      # )
     end
 
     render json: { message: 'success' }

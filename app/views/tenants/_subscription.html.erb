@@ -46,6 +46,12 @@
     <%= @plan.max_members %>
     <hr>
 
+    <%= @tenant.stripe_customer_id %>
+    <%= button_to "Manage Billing", customer_portal_sessions_path, data: { disable_with: "validating..." } %>
+    <%= button_to "Checkout", checkout_create_path, remote: true, data: { disable_with: "validating..." } %>
+
+    <hr>
+
     <% if @plan.amount > 0 %>
       <%= form_tag charge_path, method: :post do %>
         <script class="stripe-button" 

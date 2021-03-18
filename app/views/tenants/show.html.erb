@@ -20,14 +20,6 @@
     <% end %>
   </div>
   <div class="card-footer">
-    <strong>
-      <%= model_class.human_attribute_name(:stripe_customer_id).capitalize %>:
-    </strong>
-    <%= @tenant.stripe_customer_id %>
-    <%= button_to "Manage Billing", customer_portal_sessions_path, data: { disable_with: "validating..." } %>
-    <%= button_to "Checkout", checkout_create_path, remote: true, data: { disable_with: "validating..." } %>
-  </div>
-  <div class="card-footer">
     <% if current_user.tenants.include?(@tenant) && Member.find_by(user: current_user, tenant: @tenant).admin? %>
       <%= link_to t(".edit", default: t("helpers.links.edit")).capitalize, edit_tenant_path(@tenant), class: "btn btn-sm btn-warning" %>
       <%= link_to t(".destroy", default: t("helpers.links.destroy")).capitalize, @tenant, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>

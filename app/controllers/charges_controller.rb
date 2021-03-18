@@ -1,7 +1,6 @@
 class ChargesController < ApplicationController
   include SetTenant # include ON TOP of controller that has to be scoped
   include RequireTenant # no current_tenant = no access to entire controller. redirect to root
-  include SetCurrentMember # for role-based authorization. @current_member.admin?
 
   before_action :require_subscription, only: %i[charge]
 
@@ -10,16 +9,7 @@ class ChargesController < ApplicationController
     plan = subscription.plan
 
     if plan.amount > 0
-      customer = Stripe::Customer.create(
-        email: params[:stripeEmail],
-        source: params[:stripeToken]
-      )
-      charge_stripe = Stripe::Charge.create(
-        customer: customer.id,
-        amount: plan.amount,
-        description: current_tenant.name,
-        currency: plan.currency
-      )
+      # payment provider logic
     end
 
     charge = Charge.create(
@@ -39,9 +29,6 @@ class ChargesController < ApplicationController
     else
       redirect_to tenant_path(current_tenant), alert: "Something went wrong. Please try again."
     end
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to tenant_path(current_tenant), alert: "Payment went wrong. Please try again."
   end
 
   private
