@@ -10,6 +10,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
       if auth.nil?
         redirect_to root_path, alert: "No data received. Please try again"
+      elsif auth.info.email.nil?
+        redirect_to root_path, alert: "This social account does not have a public email. Try another account."
       else
 
         # we look for an identity and user that share this oauth data
@@ -27,7 +29,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             email: auth.info.email,
             password: Devise.friendly_token[0, 20]
           )
-          user.identities.create(identity_params)
+          if user.save?
+            user.identities.create(identity_params)
+          end
         end
 
         # confirm account with social login
