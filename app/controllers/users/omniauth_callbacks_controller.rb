@@ -29,7 +29,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             email: auth.info.email,
             password: Devise.friendly_token[0, 20]
           )
-          if user.save?
+          user.save
+          if user.persisted?
             user.identities.create(identity_params)
           end
         end
