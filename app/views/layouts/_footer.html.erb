@@ -25,8 +25,6 @@
         <% end %>
       </div>
       <div class="col-lg-4">
-        <%= link_to t('navigation.about'), about_path, class: "#{'active font-weight-bold' if current_page?(about_path)}" %>
-        <br/>
         <%= link_to t('navigation.pricing'), pricing_path, class: "#{'active font-weight-bold' if current_page?(pricing_path)}" %>
         <br/>
         <%= link_to t('navigation.terms'), terms_path, class: "#{'active font-weight-bold' if current_page?(terms_path)}" %>
@@ -41,11 +39,6 @@
         <br/>
         <%= link_to "https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159", target: :_blank do %>
           Learn to build an eLearning platform
-          <div class="fa fa-external-link-alt"></div>
-        <% end %>
-        <br/>
-        <%= link_to "https://corsego.com", target: :_blank do %>
-          Corsego eLearning platform
           <div class="fa fa-external-link-alt"></div>
         <% end %>
         <br/>

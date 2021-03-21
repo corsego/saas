@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   }
 
   root "static_public#landing_page"
-  get "about", to: "static_public#about"
   get "pricing", to: "static_public#pricing"
   get "privacy", to: "static_public#privacy"
   get "terms", to: "static_public#terms"
