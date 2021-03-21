@@ -1,105 +1,106 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-purple">
-  <% if current_user %>
-    <% if current_user.tenants.include?(current_user.tenant) %>
-      <%= link_to tenant_path(current_user.tenant), class: "#{"active font-weight-bold" if ActsAsTenant.current_tenant} navbar-brand" do %>
-        <% if current_user.tenant.logo.attached? %>
-          <%= image_tag current_user.tenant.logo, height: '30', alt: "logo", class: "d-inline-block align-top lazyload" %>
-        <% else %>
-          <i class="fas fa-briefcase"></i>
+  <div class="container-fluid">
+    <% if current_user %>
+      <% if current_user.tenants.include?(current_user.tenant) %>
+        <%= link_to tenant_path(current_user.tenant), class: "#{"active font-weight-bold" if ActsAsTenant.current_tenant} navbar-brand" do %>
+          <% if current_user.tenant.logo.attached? %>
+            <%= image_tag current_user.tenant.logo, height: '30', alt: "logo", class: "d-inline-block align-top lazyload" %>
+          <% else %>
+            <i class="fas fa-briefcase"></i>
+          <% end %>
+          <%= current_user.tenant.name %>
         <% end %>
-        <%= current_user.tenant.name %>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "favicon.png", height: '30', alt: "logo", class: "d-inline-block align-top lazyload" %>
+        CorsegoSaaS
       <% end %>
     <% end %>
-  <% else %>
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "favicon.png", height: '30', alt: "logo", class: "d-inline-block align-top lazyload" %>
-      CorsegoSaaS
-    <% end %>
-  <% end %>
-  <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if current_user %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-    <% if current_user %>
-      <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="tenantsDropdown" role="button">
-            <i class="fas fa-building"></i>
-            <%= t 'navigation.tenants' %>
-          </a>
-          <div aria-labelledby="tenantsDropdown" class="dropdown-menu dropdown-menu-left">
-            <%= link_to tenants_path, class: "dropdown-item #{'active' if current_page?(tenants_path)}" do %>
-              <i class="fas fa-building"></i>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="tenantsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= t 'navigation.tenants' %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="tenantsDropdown">
+              <%= link_to tenants_path, class: "dropdown-item #{'active' if current_page?(tenants_path)}" do %>
+                <i class="fas fa-building"></i>
+                <%= t 'navigation.tenants' %>
+              <% end %>
+              <%= link_to new_tenant_path, class: "dropdown-item #{'active' if current_page?(new_tenant_path)}" do %>
+                <i class="fas fa-plus"></i>
+                <%= t 'navigation.new_tenant' %>
+              <% end %>
+            </ul>
+          </li>
+  
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+  
+          <% if current_user.superadmin? %>
+            <%= long_active_link_to superadmin_root_path do %>
+              <i class="fas fa-user-shield"></i>
+              <%= t 'navigation.superadmin' %>
             <% end %>
-            <%= link_to new_tenant_path, class: "dropdown-item #{'active' if current_page?(new_tenant_path)}" do %>
-              <i class="fas fa-plus"></i>
-              <%= t 'navigation.new_tenant' %>
-            <% end %>
-          </div>
-        </li>
-
-      </ul>
-      <ul class="navbar-nav mr-right">
-
-        <% if current_user.superadmin? %>
-          <%= long_active_link_to superadmin_root_path do %>
-            <i class="fas fa-user-shield"></i>
-            <%= t 'navigation.superadmin' %>
           <% end %>
-        <% end %>
+  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <% if current_user.image? %>
+                <%= image_tag current_user.image, height: '30', alt: "logo", class: "d-inline-block align-top rounded-circle lazyload" %>
+              <% else %>
+                <div class="fa fa-user"></div>
+              <% end %>
+              <%= current_user.username %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+              <%= link_to user_path(current_user), class: "dropdown-item #{'active' if current_page?(user_path(current_user))}" do %>
+                <%= t 'navigation.my_profile' %>
+              <% end %>
+              <%= link_to edit_user_registration_path, class: "dropdown-item #{'active' if current_page?(edit_user_registration_path)}" do %>
+                <%= t 'navigation.account_settings' %>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
+                <%= t 'navigation.sign_out' %>
+              <% end %>
+            </ul>
+          </li>
+  
+        </ul>
+      <% else %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
-            <% if current_user.image? %>
-              <%= image_tag current_user.image, height: '30', alt: "logo", class: "d-inline-block align-top rounded-circle lazyload" %>
-            <% else %>
-              <div class="fa fa-user"></div>
-            <% end %>
-            <%= current_user.username %>
-          </a>
-          <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right">
-            <%= link_to user_path(current_user), class: "dropdown-item #{'active' if current_page?(user_path(current_user))}" do %>
-              <%= t 'navigation.my_profile' %>
-            <% end %>
-            <%= link_to edit_user_registration_path, class: "dropdown-item #{'active' if current_page?(edit_user_registration_path)}" do %>
-              <%= t 'navigation.account_settings' %>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete, class: "dropdown-item" do %>
-              <%= t 'navigation.sign_out' %>
-            <% end %>
-          </div>
-        </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= I18n.locale %>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+              <% I18n.available_locales.excluding(I18n.locale).each do |language| %>
+                  <%= link_to language, root_path(locale: language), class: "dropdown-item" %>
+              <% end %>
+            </ul>
+          </li>
 
-      </ul>
-    <% else %>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="languageDropdown" role="button">
-            <%= I18n.locale %>
-          </a>
-          <div aria-labelledby="languageDropdown" class="dropdown-menu dropdown-menu-right">
-            <% I18n.available_locales.excluding(I18n.locale).each do |language| %>
-                <%= link_to language, root_path(locale: language), class: "dropdown-item" %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
-      <ul class="navbar-nav mr-right">
-        <li class="<%= 'active font-weight-bold' if current_page?(new_user_registration_path) %> nav-item">
-          <%= link_to t("navigation.register"), new_user_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="<%= 'active font-weight-bold' if current_page?(new_user_session_path) %> nav-item">
-          <%= link_to t("navigation.login"), new_user_session_path, class: 'nav-link' %>
-        </li>
-
-        <% User.omniauth_providers.each do |provider| %>
-          <%= link_to social_icon(provider), omniauth_authorize_path(User, provider), method: :post, class: "nav-link" %>
-        <% end %>
-
-      </ul>
-    <% end %>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="<%= 'active font-weight-bold' if current_page?(new_user_registration_path) %> nav-item">
+            <%= link_to t("navigation.register"), new_user_registration_path, class: 'nav-link' %>
+          </li>
+          <li class="<%= 'active font-weight-bold' if current_page?(new_user_session_path) %> nav-item">
+            <%= link_to t("navigation.login"), new_user_session_path, class: 'nav-link' %>
+          </li>
+  
+          <% User.omniauth_providers.each do |provider| %>
+            <%= link_to social_icon(provider), omniauth_authorize_path(User, provider), method: :post, class: "nav-link" %>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
   </div>
 </nav>
