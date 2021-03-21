@@ -2,7 +2,7 @@
 <h3>
   <div class="text-center">
     <%= t '.title', default: model_class.model_name.human.pluralize.titleize %>
-    <div class="badge badge-info">
+    <div class="badge bg-info">
       <%= @members.count %>
     </div>
   </div>
@@ -17,7 +17,7 @@
   <% else %>
     <small>
       <%= t(".max_members_for_subscription_reached") %>
-      <div class="badge badge-info">
+      <div class="badge bg-info">
         <%= current_tenant.plan.max_members %>
       </div>
     </small>
@@ -57,7 +57,7 @@
                 </span>
               <br/>
               <% if member.user.invitation_accepted_at.present? %>
-                <span class="badge badge-success">
+                <span class="badge bg-success">
                   invitation accepted
                 </span>
               <% else %>
