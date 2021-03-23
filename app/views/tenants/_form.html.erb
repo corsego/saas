@@ -1,19 +1,10 @@
-
 <%= simple_form_for(@tenant) do |f| %>
   <% if @tenant.errors.any? %>
-    <div id="error_explanation">
-      <h4>
-        <%= pluralize(@tenant.errors.count, "error") %>
-        prohibited this tenant from being saved:
-      </h4>
-      <ul>
-        <% @tenant.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <ul class="text-danger">
+      <% @tenant.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
   <% end %>
 
   <div class="form-inputs">
