@@ -24,7 +24,6 @@
       <% if current_user %>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="tenantsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= t 'navigation.tenants' %>
@@ -40,10 +39,9 @@
               <% end %>
             </ul>
           </li>
-  
         </ul>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-  
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <% if current_user.superadmin? %>
             <%= long_active_link_to superadmin_root_path do %>
               <i class="fas fa-user-shield"></i>
@@ -72,11 +70,10 @@
               <% end %>
             </ul>
           </li>
-  
         </ul>
+
       <% else %>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= I18n.locale %>
@@ -87,8 +84,9 @@
               <% end %>
             </ul>
           </li>
+        </ul>
 
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="<%= 'active font-weight-bold' if current_page?(new_user_registration_path) %> nav-item">
             <%= link_to t("navigation.register"), new_user_registration_path, class: 'nav-link' %>
           </li>
