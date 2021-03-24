@@ -1,11 +1,11 @@
 module ApplicationHelper
   def dark_mode_helper
     if cookies[:theme] == "light"
-      link_to root_path(theme: "dark"), class: "btn btn-sm btn-outline-secondary" do
+      link_to root_path(theme: "dark"), class: "btn btn-outline-secondary" do
         "<i class='fa fa-moon text-light'></i>".html_safe
       end
     else
-      link_to root_path(theme: "light"), class: "btn btn-sm btn-outline-secondary" do
+      link_to root_path(theme: "light"), class: "btn btn-outline-secondary" do
         "<i class='far fa-moon text-light'></i>".html_safe
       end
     end
@@ -15,10 +15,10 @@ module ApplicationHelper
   def boolean_label(value)
     case value
       when true
-        # content_tag(:span, "Yes", class: "badge badge-success")
-        content_tag(:span, value, class: "badge badge-success")
+        # content_tag(:span, "Yes", class: "badge bg-success")
+        content_tag(:span, value, class: "badge bg-success")
       when false
-        content_tag(:span, value, class: "badge badge-danger")
+        content_tag(:span, value, class: "badge bg-danger")
     end
   end
 

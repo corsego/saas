@@ -6,14 +6,12 @@
         <%= link_to 'CorsegoSaaS', root_path, class: "#{'active font-weight-bold' if current_page?(root_path)}" %>
         © 
         <%= Time.now.year %>
-        <br/>
+        <br>
         <%= link_to "https://gumroad.com/l/ror6saas", target: :_blank do %>
           <i class="fas fa-shopping-cart"></i>
           Buy Licence
         <% end %>
-        <br/>
-        <%= link_to t('navigation.home'), root_path, class: "#{'active font-weight-bold' if current_page?(root_path)}" %>
-        <br/>
+        <br>
         <%= mail_to 'hello@corsego.com' do %>
           <div class="fa fa-envelope"></div>
         <% end %>
@@ -26,9 +24,9 @@
       </div>
       <div class="col-lg-4">
         <%= link_to t('navigation.pricing'), pricing_path, class: "#{'active font-weight-bold' if current_page?(pricing_path)}" %>
-        <br/>
+        <br>
         <%= link_to t('navigation.terms'), terms_path, class: "#{'active font-weight-bold' if current_page?(terms_path)}" %>
-        <br/>
+        <br>
         <%= link_to t('navigation.privacy'), privacy_path, class: "#{'active font-weight-bold' if current_page?(privacy_path)}" %>
       </div>
       <div class="col-lg-4">
@@ -36,12 +34,12 @@
           Learn to build a Multi-Tenancy SaaS
           <div class="fa fa-external-link-alt"></div>
         <% end %>
-        <br/>
+        <br>
         <%= link_to "https://www.udemy.com/course/ruby-on-rails-6-learn-20-gems-build-an-e-learning-platform/?referralCode=4721E9D437DEE1734159", target: :_blank do %>
           Learn to build an eLearning platform
           <div class="fa fa-external-link-alt"></div>
         <% end %>
-        <br/>
+        <br>
         <%= link_to "https://blog.corsego.com", target: :_blank do %>
           Corsego Ruby on Rails Blog
           <div class="fa fa-external-link-alt"></div>

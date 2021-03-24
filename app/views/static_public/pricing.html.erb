@@ -2,31 +2,33 @@
   <%= t(".title") %>
 </h2>
 
-<br/>
+<br>
 
-<div class="card-deck">
+<div class="row row-cols-1 row-cols-md-2 g-4">
   <% @plans.each do |plan| %>
-    <div class="card shadow text-center">
-      <div class="card-body">
-        <h3 class="card-title font-weight-bold">
-          <em>
-          <%= plan.name %>
-          </em>
-        </h3>
-        <br/>
-        <%= plan.currency %>
-        <b style="font-size: 1.9em;">
-          <%= plan.amount/100 %>
-        </b>
-        /
-        <%= plan.interval %>
-        <hr>
-        <small>
-          <%= pluralize(plan.max_members, "user", plural: "users") %>
-        </small>
-      </div>
-      <div class="card-footer">
-        <%= subscribe_to(plan) %>
+    <div class="col">
+      <div class="card shadow text-center">
+        <div class="card-body">
+          <h3 class="card-title font-weight-bold">
+            <em>
+            <%= plan.name %>
+            </em>
+          </h3>
+          <br/>
+          <%= plan.currency %>
+          <b style="font-size: 1.9em;">
+            <%= plan.amount/100 %>
+          </b>
+          /
+          <%= plan.interval %>
+          <hr>
+          <small>
+            <%= pluralize(plan.max_members, "user", plural: "users") %>
+          </small>
+        </div>
+        <div class="card-footer">
+          <%= subscribe_to(plan) %>
+        </div>
       </div>
     </div>
   <% end %>
