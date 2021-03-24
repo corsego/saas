@@ -52,16 +52,14 @@ body.dark {
   background-color: #1f2c44;
 }
 
-// cards and jumbotrons
+// cards
 body.light .card,
-body.light .jumbotron,
 footer.light {
   color: var(--lightColor);
   background-color: var(--lightBackground);
 }
 
 body.dark .card,
-body.dark .jumbotron,
 footer.dark {
   color: var(--darkColor);
   background-color: var(--darkBackground);

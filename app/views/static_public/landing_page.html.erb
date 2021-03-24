@@ -1,4 +1,4 @@
-<div class="jumbotron shadow">
+<div class="card p-3 shadow">
   <div class="row">
     <div class="col-md-6">
       <h1>
@@ -7,11 +7,11 @@
       <br>
       <h5>
         This is a Ruby on Rails Multitenancy Software as a Service boilerplate app.
-        <p></p>
+        <p>
         Imagine having different secure organisations in Slack, or different team projects in Trello.
-        <p></p>
+        <p>
         Users can create organisations, invite members, and manage access rights to different data
-        <p></p>
+        <p>
         Ruby 2.7+,
         Rails 6.1+
       </h5>
@@ -32,7 +32,9 @@
   </div>
 </div>
 
-<div class="jumbotron shadow text-center">
+<br>
+
+<div class="card p-3 shadow text-center">
   <h3>
     Buy a Licence + Video course:
     <br>
@@ -42,6 +44,8 @@
     <% end %>
   </h3>
 </div>
+
+<br>
 
 <div class="text-center">
   <h1>
@@ -65,33 +69,23 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Log in with email
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Log in with google
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Log in with github
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Connect multiple social accounts to one user
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Log in with email
+          </li>
+          <li>
+            Log in with google
+          </li>
+          <li>
+            Log in with github
+          </li>
+          <li>
+            Connect multiple social accounts to one user
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -102,45 +96,29 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Complete row-based multitenancy
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          User can create multiple tenants (same as [:organisations, :teams, :accounts])
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          User can switch between tenants
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          User can invite others to become members of the tenant
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Flexible ways to set current_tenant only where you need it
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Data is scoped based on current_tenant
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Complete row-based multitenancy
+          </li>
+          <li>
+            User can create multiple tenants (same as [:organisations, :teams, :accounts])
+          </li>
+          <li>
+            User can switch between tenants
+          </li>
+          <li>
+            User can invite others to become members of the tenant
+          </li>
+          <li>
+            Flexible ways to set current_tenant only where you need it
+          </li>
+          <li>
+            Data is scoped based on current_tenant
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -151,45 +129,29 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          When a user creates a tenant, he gets tenant "admin" role
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          3 default roles: [:admin, :editor, :viewer]. You can change them.
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Admin can manage roles and delete users
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Admin can manage general tenant settings
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Editor can create, read, update, delete tenant-specific data
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Viewer can only see the tenant-specific data
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            When a user creates a tenant, he gets tenant "admin" role
+          </li>
+          <li>
+            3 default roles: [:admin, :editor, :viewer]. You can change them.
+          </li>
+          <li>
+            Admin can manage roles and delete users
+          </li>
+          <li>
+            Admin can manage general tenant settings
+          </li>
+          <li>
+            Editor can create, read, update, delete tenant-specific data
+          </li>
+          <li>
+            Viewer can only see the tenant-specific data
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
 </div>
 <br>
@@ -203,27 +165,20 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Create custom pricing Plans
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          For example - restrictions based on max. members
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          You can change the plan for a tenant
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Create custom pricing Plans
+          </li>
+          <li>
+            For example - restrictions based on max. members
+          </li>
+          <li>
+            You can change the plan for a tenant
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -234,36 +189,23 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Custom subscriptions engine (no gems!)
-          <div class="badge bg-success">
-            Available!
-          </div>
-        </li>
-        <li>
-          NO tenant access without an active subscription
-          <div class="badge bg-success">
-            Available!
-          </div>
-        </li>
-        <li>
-          Subscriptions
-          <div class="badge bg-success">
-            Available!
-          </div>
-        </li>
-        <li>
-          One-time Payments
-          <div class="badge bg-success">
-            Available!
-          </div>
-        </li>
-        <li>
-          Stripe integration
-          <div class="badge bg-success">
-            Available!
-          </div>
-        </li>
+        <ul>
+          <li>
+            Custom subscriptions engine (no gems!)
+          </li>
+          <li>
+            NO tenant access without an active subscription
+          </li>
+          <li>
+            Subscriptions
+          </li>
+          <li>
+            One-time Payments
+          </li>
+          <li>
+            Stripe integration
+          </li>
+        </ul>
       </div>
     </div>
   </div>
@@ -276,21 +218,17 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Custom SIMPLE superadmin panel (no gems!)
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Manage users, tenants, plans, subscriptions, charges
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Custom SIMPLE superadmin panel (no gems!)
+          </li>
+          <li>
+            Manage users, tenants, plans, subscriptions, charges
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
 </div>
 <br>
@@ -304,27 +242,20 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Full mobile responsiveness
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Nice styling with minimal css
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Fontawesome icons
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Full mobile responsiveness
+          </li>
+          <li>
+            Nice styling with minimal css
+          </li>
+          <li>
+            Fontawesome icons
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -335,21 +266,17 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          Users can select language
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Views with i18n included
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            Users can select language
+          </li>
+          <li>
+            Views with i18n included
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -360,33 +287,23 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          ActiveStorage & AWS S3 readiness
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          reCaptcha without google
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Dark Mode
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          Progressive Web App
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
+        <ul>
+          <li>
+            ActiveStorage & AWS S3 readiness
+          </li>
+          <li>
+            reCaptcha without google
+          </li>
+          <li>
+            Dark Mode
+          </li>
+          <li>
+            Progressive Web App
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
 </div>
 <br>
@@ -400,33 +317,17 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          New scaffolds are automatically styled
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          New scaffolds have i18n by default
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          <b>Search</b> functionality integrated into new scaffolds.
-          <div class="badge bg-warning">
-            Coming soon!
-          </div>
-        </li>
-        <li>
-          <b>Sorting</b> functionality integrated into new scaffolds.
-          <div class="badge bg-warning">
-            Coming soon!
-          </div>
-        </li>
+        <ul>
+          <li>
+            New scaffolds are automatically styled
+          </li>
+          <li>
+            New scaffolds have i18n by default
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -437,45 +338,14 @@
         </h3>
       </div>
       <div class="card-body">
-        <li>
-          100% video coverage (code-along tutorial format) of how this app was created
-          <div class="badge bg-success">
-            Available
-          </div>
-        </li>
-        <li>
-          User documentation
-          <div class="badge bg-warning">
-            Coming soon!
-          </div>
-        </li>
-        <li>
-          Developer documentation
-          <div class="badge bg-warning">
-            Coming soon!
-          </div>
-        </li>
+        <ul>
+          <li>
+            100% video coverage (code-along tutorial format) of how this app was created
+          </li>
+        </ul>
       </div>
     </div>
-    <p></p>
-  </div>
-  <div class="col-md-4">
-    <div class="card shadow">
-      <div class="card-header">
-        <h3>
-          <i class="fas fa-quote-left"></i>
-          Test coverage
-        </h3>
-      </div>
-      <div class="card-body">
-        <li>
-          <div class="badge bg-warning">
-            Coming soon!
-          </div>
-        </li>
-      </div>
-    </div>
-    <p></p>
+    <p>
   </div>
 </div>
 
@@ -502,7 +372,7 @@
         Bill organisations, not individuals.
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -516,7 +386,7 @@
         Users can create multiple independent environments for different teams.
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
   <div class="col-md-4">
     <div class="card shadow">
@@ -532,6 +402,6 @@
         Role-based access.
       </div>
     </div>
-    <p></p>
+    <p>
   </div>
 </div>
