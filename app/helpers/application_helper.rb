@@ -15,27 +15,40 @@ module ApplicationHelper
   def boolean_label(value)
     case value
       when true
-        # content_tag(:span, "Yes", class: "badge bg-success")
-        content_tag(:span, value, class: "badge bg-success")
+        badge_color = "badge bg-success"
       when false
-        content_tag(:span, value, class: "badge bg-danger")
+        badge_color = "badge bg-danger"
     end
+    content_tag(:span, value, class: badge_color)
   end
 
   # icons for omniauth
   def social_icon(provider)
     case provider
       when :google_oauth2
-        content_tag(:i, nil, class: "fab fa-google")
+        social_image = "fab fa-google"
       when :github
-        content_tag(:i, nil, class: "fab fa-github")
+        social_image = "fab fa-github"
       when :twitter
-        content_tag(:i, nil, class: "fab fa-twitter")
+        social_image = "fab fa-twitter"
       when :facebook
-        content_tag(:i, nil, class: "fab fa-facebook")
+        social_image = "fab fa-facebook"
       when :gitlab
-        content_tag(:i, nil, class: "fab fa-gitlab")
+        social_image = "fab fa-gitlab"
     end
+    content_tag(:i, nil, class: social_image)
+  end
+
+  def status_label(status)
+    case status
+      when "planned"
+        badge_color = "badge bg-danger"
+      when "progress"
+        badge_color = "badge bg-warning"
+      when "done"
+        badge_color = "badge bg-success"
+    end
+    content_tag(:span, status.titleize, class: badge_color)
   end
 
   def social_color(provider)
