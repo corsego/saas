@@ -5,6 +5,13 @@ module SetTenant
     set_current_tenant_through_filter # acts_as_tenant
     before_action :set_tenant
 
+    # def set_tenant
+    #   return set_current_tenant(nil) if current_user
+    #   return set_current_tenant(nil) if current_user.tenant_id.present?
+    #   return set_current_tenant(nil) if current_user.tenants.include?(current_user.tenant)
+    #   set_current_tenant(current_user.tenant)
+    # end
+
     def set_tenant
       if current_user
         if current_user.tenant_id.present?
