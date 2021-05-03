@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-purple">
-  <div class="container-fluid">
+  <div class="container">
     <% if current_user %>
       <% if current_user.tenants.include?(current_user.tenant) %>
         <%= link_to tenant_path(current_user.tenant), class: "#{"active font-weight-bold" if ActsAsTenant.current_tenant} navbar-brand" do %>

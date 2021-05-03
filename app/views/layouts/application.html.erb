@@ -23,7 +23,7 @@
     <%= render 'layouts/messages' %>
     <%= render 'layouts/header' %>
 
-    <div class="container-fluid">
+    <div class="container">
       <p></p>
         <% if ActsAsTenant.current_tenant && current_user.tenants.include?(current_user.tenant) %>
           <div class="row">
