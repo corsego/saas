@@ -12,7 +12,7 @@ module SetTenant
             # current_account = Tenant.find_by(id: current_user.tenant_id) #does not require belongs_to relationship
             # requires belongs_to relationship
             current_account = current_user.tenant
-            # User.find_by(email: "wawa@w.com").update_attributes!(tenant_id: 2)
+            # User.find_by(email: "wawa@w.com").update(tenant_id: 2)
             set_current_tenant(current_account)
           else
             set_current_tenant(nil)

@@ -11,7 +11,7 @@ class TenantsController < ApplicationController
 
   def switch
     if current_user.tenants.include?(@tenant)
-      current_user.update_attribute(:tenant_id, @tenant.id)
+      current_user.update(tenant_id: @tenant.id)
       redirect_to tenant_path(current_user.tenant), notice: t(".current_tenant", tenant: current_user.tenant.name)
     else
       redirect_to tenants_path, alert: t(".no_rights", tenant: @tenant.name)
@@ -40,7 +40,7 @@ class TenantsController < ApplicationController
       # when a tenant is created, the creator becomes a member
       @member = Member.create!(tenant: @tenant, user: current_user, admin: true)
       # when a tenant is created, the creator sets it as current_tenant
-      current_user.update_attribute(:tenant_id, @tenant.id)
+      current_user.update(tenant_id: @tenant.id)
       redirect_to @tenant, notice: t(".created")
     else
       render :new
