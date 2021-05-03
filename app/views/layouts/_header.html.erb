@@ -42,6 +42,10 @@
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <%= link_to "https://gumroad.com/l/ror6saas", class: 'nav-link', target: :_blank do %>
+            <i class="fas fa-shopping-cart"></i>
+            Buy Licence
+          <% end %>
           <% if current_user.superadmin? %>
             <%= long_active_link_to superadmin_root_path do %>
               <i class="fas fa-user-shield"></i>
