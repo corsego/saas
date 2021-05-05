@@ -68,13 +68,16 @@ yarn
 2. IMPORTANT: Set up your secret credentials, otherwise you might not be able to run the app:
 
 Go to **config** folder and delete the file `credentials.yml.enc`
-```
+
 Using VIM as an editor. You could change editors' name to your choice such as: `code`, `atom` or `sublime`
-`--wait` opens up credential file in your editor. Not using it would open, save and close your editor before you apply any changs.
+
+`--wait` opens up credential file in your editor to alter it then save it on exit or close. Not using it would open, save and close your editor before you apply any changes.
+
 ```
 EDITOR="vim --wait" rails credentials:edit
 ```
 and inside the file:
+
 ```
 aws:
   access_key_id: YOUR_CODE
@@ -319,3 +322,5 @@ By seeing their differences you can create the ideal setup for you.
 * buildasaasappinrails.com - big NO
 
 All the above tools are inspired by spark.laravel.com
+
+
