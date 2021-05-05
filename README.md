@@ -73,6 +73,9 @@ Using VIM as an editor. You could change editors' name to your choice such as: `
 
 `--wait` opens up credential file in your editor to alter it then save it on exit or close. Not using it would open, save and close your editor before you apply any changes.
 
+Using VIM as an editor. You could change editors' name to your choice such as: `code`, `atom` or `sublime`
+`--wait` opens up credential file in your editor. Not using it would open, save and close your editor before you apply any changs.
+
 ```
 EDITOR="vim --wait" rails credentials:edit
 ```
