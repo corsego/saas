@@ -52,7 +52,7 @@
           data-amount="<%= @plan.amount %>" 
           data-description="<%= current_tenant.name %>" 
           data-email="<%= current_user.email %>" 
-          data-key="<%= Rails.application.credentials[Rails.env.to_sym][:stripe][:publishable] %>" 
+          data-key="<%= Rails.application.credentials.dig(Rails.env.to_sym, :stripe, :publishable) %>" 
           data-locale="auto" 
           src="https://checkout.stripe.com/checkout.js">
         </script>
