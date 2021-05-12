@@ -14,7 +14,7 @@ class ChargesController < ApplicationController
         email: params[:stripeEmail],
         source: params[:stripeToken]
       )
-      charge_stripe = Stripe::Charge.create(
+      Stripe::Charge.create(
         customer: customer.id,
         amount: plan.amount,
         description: current_tenant.name,
