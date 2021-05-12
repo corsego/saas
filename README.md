@@ -19,7 +19,7 @@
 
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/testdouble/standard)
 
-### Installation Requirements 
+### Installation Requirements
 * ruby v 2.7.2 +
 * rails 6.1.0 +
 * postgresql database
@@ -27,7 +27,7 @@
 
 ### Connected services required
 * AWS S3 API - file storage ** in production **
-* Amazon SES for sending emails ** in production ** 
+* Amazon SES for sending emails ** in production **
 * Google oAuth API
 * Github oAuth API
 * Twitter oAuth API
@@ -51,7 +51,7 @@ sudo apt install postgresql libpq-dev redis-server redis-tools yarn
 sudo su postgres
 createuser --interactive
 ubuntu
-y 
+y
 exit
 ```
 
@@ -68,10 +68,19 @@ yarn
 2. IMPORTANT: Set up your secret credentials, otherwise you might not be able to run the app:
 
 Go to **config** folder and delete the file `credentials.yml.enc`
+
+Using VIM as an editor. You could change editors' name to your choice such as: `code`, `atom` or `sublime`
+
+`--wait` opens up credential file in your editor to alter it then save it on exit or close. Not using it would open, save and close your editor before you apply any changes.
+
+Using VIM as an editor. You could change editors' name to your choice such as: `code`, `atom` or `sublime`
+`--wait` opens up credential file in your editor. Not using it would open, save and close your editor before you apply any changs.
+
 ```
-EDITOR=vim rails credentials:edit
+EDITOR="vim --wait" rails credentials:edit
 ```
 and inside the file:
+
 ```
 aws:
   access_key_id: YOUR_CODE
@@ -110,12 +119,12 @@ Working with VIM:
 * `Ctrl` + `V` = to paste
 * `ESC` + `:`` + `w` + `q` + `Enter` = save changes in the file
 
-3. Run the migrations 
+3. Run the migrations
 ```
 rails db:create
 rails db:migrate
 ```
-To add default data, you can also run 
+To add default data, you can also run
 ```
 rails db:seed
 ```
@@ -149,7 +158,7 @@ heroku run rails db:migrate
 How to MIRROR the repo (not fork) - create a copy with saving the commit history:
 [https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/duplicating-a-repository)
 
-If you have troubles running the app or any questions don't hesitate to contact me at hello@corsego.com 🧐 
+If you have troubles running the app or any questions don't hesitate to contact me at hello@corsego.com 🧐
 
 ****
 
@@ -192,7 +201,7 @@ If you have troubles running the app or any questions don't hesitate to contact 
 
 ### Notes
 
-SaaS subscriptions flow: 
+SaaS subscriptions flow:
 * to access app functionality (specific controllers), a user has to be subscribed with an active subscription.
 * user selects plan and creates subscription with an `ends_at: Time.now`.
 * a subscription is `active` if the `ends_at` is in the future.
@@ -214,14 +223,14 @@ Drawbacks:
 * No trial period option (yet?)
 * Cancelling subscription right now (not at the end of the billing period); No prorating.
 
-Stripe integration is currently working but outdated (legacy checkout). 
+Stripe integration is currently working but outdated (legacy checkout).
 
 Work in process on migrating to the new Stripe Checkout Sessions.
 
 ****
 
 Possible disadvantages of setting tenant by `current_user.tenant_id` column:
-* One user can not open 2 tenants in 2 different tabs 
+* One user can not open 2 tenants in 2 different tabs
 * Tenant is not visible in the URL
 
 Are there any disadvantages in setting tenant in `session` without having `current_user.tenant_id` column?
@@ -234,7 +243,7 @@ Not adding ActionText by default - users can add it themselves if they need. Not
 
 Tailwind? I think it is not mature enough.
 
-HAML? I personally prefer haml over erb. 
+HAML? I personally prefer haml over erb.
 This app uses erb so that it is more approachable to the general public.
 You can easily convert erb to haml with `gem "haml-rails"`.
 
@@ -244,7 +253,7 @@ If you are interested in playing around other multitenancy gems, I recommend [ac
 
 ### These features should not be part of the core app:
 
-* User feedback 
+* User feedback
 * Feature voting
 * Forum
 * User wiki
@@ -252,7 +261,7 @@ If you are interested in playing around other multitenancy gems, I recommend [ac
 * Company blog
 * Announcements
 
-Why? 
+Why?
 * features are not core business
 * features are too big to implement in high-quality
 * features can be covered by an external service
@@ -279,7 +288,7 @@ rails g scaffold projects name tenant:references
 That's it. Now to access the Projects table a user has to:
 * have a `current_user`
 * have a `current_tenant`
-* tenant subscription should be active 
+* tenant subscription should be active
 
 Whenever a `project` is created, it will be automatically assigned and scoped to the `current_tenant`
 
@@ -300,7 +309,7 @@ Whenever a `project` is created, it will be automatically assigned and scoped to
 
 ### ~~Competitors~~ Similar Ruby on Rails solutions
 
-I don't think that corsego/saas & the other tools should be considered competitors: 
+I don't think that corsego/saas & the other tools should be considered competitors:
 
 I think they can be considered **complimentary** purchases🤯
 
