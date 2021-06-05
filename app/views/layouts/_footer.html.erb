@@ -3,7 +3,7 @@
     <br>
     <div class="row">
       <div class="col-lg-4">
-        <%= link_to 'CorsegoSaaS', root_path, class: "#{'active font-weight-bold' if current_page?(root_path)}" %>
+        <%= link_to 'CorsegoSaaS', root_path, class: "#{'active fw-bold' if current_page?(root_path)}" %>
         © 
         <%= Time.now.year %>
         <br>
@@ -23,11 +23,11 @@
         <% end %>
       </div>
       <div class="col-lg-4">
-        <%= link_to t('navigation.pricing'), pricing_path, class: "#{'active font-weight-bold' if current_page?(pricing_path)}" %>
+        <%= link_to t('navigation.pricing'), pricing_path, class: "#{'active fw-bold' if current_page?(pricing_path)}" %>
         <br>
-        <%= link_to t('navigation.terms'), terms_path, class: "#{'active font-weight-bold' if current_page?(terms_path)}" %>
+        <%= link_to t('navigation.terms'), terms_path, class: "#{'active fw-bold' if current_page?(terms_path)}" %>
         <br>
-        <%= link_to t('navigation.privacy'), privacy_path, class: "#{'active font-weight-bold' if current_page?(privacy_path)}" %>
+        <%= link_to t('navigation.privacy'), privacy_path, class: "#{'active fw-bold' if current_page?(privacy_path)}" %>
       </div>
       <div class="col-lg-4">
         <%= link_to "https://gumroad.com/l/ror6saas", target: :_blank do %>

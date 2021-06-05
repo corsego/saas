@@ -2,7 +2,7 @@
   <div class="container">
     <% if current_user %>
       <% if current_user.tenants.include?(current_user.tenant) %>
-        <%= link_to tenant_path(current_user.tenant), class: "#{"active font-weight-bold" if ActsAsTenant.current_tenant} navbar-brand" do %>
+        <%= link_to tenant_path(current_user.tenant), class: "#{"active fw-bold" if ActsAsTenant.current_tenant} navbar-brand" do %>
           <% if current_user.tenant.logo.attached? %>
             <%= image_tag current_user.tenant.logo, height: '30', alt: "logo", class: "d-inline-block align-top lazyload" %>
           <% else %>
@@ -91,10 +91,10 @@
         </ul>
 
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="<%= 'active font-weight-bold' if current_page?(new_user_registration_path) %> nav-item">
+          <li class="<%= 'active fw-bold' if current_page?(new_user_registration_path) %> nav-item">
             <%= link_to t("navigation.register"), new_user_registration_path, class: 'nav-link' %>
           </li>
-          <li class="<%= 'active font-weight-bold' if current_page?(new_user_session_path) %> nav-item">
+          <li class="<%= 'active fw-bold' if current_page?(new_user_session_path) %> nav-item">
             <%= link_to t("navigation.login"), new_user_session_path, class: 'nav-link' %>
           </li>
   

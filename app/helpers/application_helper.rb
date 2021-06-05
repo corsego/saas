@@ -68,14 +68,14 @@ module ApplicationHelper
 
   # link_to "homepage", root_path
   def active_link_to(name, path)
-    content_tag(:li, class: "#{"active font-weight-bold" if current_page?(path)} nav-item") do
+    content_tag(:li, class: "#{"active fw-bold" if current_page?(path)} nav-item") do
       link_to name, path, class: "nav-link"
     end
   end
 
   # link_to root_path do "homepage"
   def long_active_link_to(path)
-    content_tag(:li, class: "#{"active font-weight-bold" if current_page?(path)} nav-item") do
+    content_tag(:li, class: "#{"active fw-bold" if current_page?(path)} nav-item") do
       link_to path, class: "nav-link" do
         yield
       end
@@ -84,7 +84,7 @@ module ApplicationHelper
 
   # link_to root_path do "homepage"
   def sidebar_long_active_link_to(path)
-    content_tag(:li, class: "#{"active font-weight-bold bg-light shadow rounded" if current_page?(path)} nav-item") do
+    content_tag(:li, class: "#{"active fw-bold bg-light shadow rounded" if current_page?(path)} nav-item") do
       link_to path, class: "nav-link" do
         yield
       end
